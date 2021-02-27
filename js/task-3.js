@@ -16,26 +16,16 @@ const images = [
   },
 ];
 
-const galeryRef = document.querySelector("#gallery");
+const galleryRef = document.querySelector("#gallery");
 
-//* 1st edition
-
-/* const createItem = ({url, alt}) => {
-  galeryRef.insertAdjacentHTML("beforeend",`<li class ="task3-item"> <img class ="task3-img" src="${url}" alt="${alt}"> </li>`);
-};
-
-const addItemsToList = (array) => array.map(createItem);
-
-addItemsToList(images);
- */
-
-
- //* 2nd edition
 const addItemsToList = (array, list) => {
-    array.map(({ url, alt }) =>
-        list.insertAdjacentHTML("beforeend", ` <li class ="task3-item"> <img class ="task3-img" src="${url}" alt="${alt}"> </li>`));
+  const strings = array.reduce((acc, { url, alt }) => {
+    const string = `<li class ="task3-item"> <img class ="task3-img" src="${url}" alt="${alt}"> </li>`;
+    return acc + string
+  }, '')
+ list.insertAdjacentHTML("beforeend", strings);
 };
 
-addItemsToList(images, galeryRef);
+addItemsToList(images, galleryRef);
 
 
